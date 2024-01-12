@@ -1,18 +1,41 @@
-import { deleteCandidate } from "../services/api.js"
+import { deleteCandidate } from "../services/api.js";
+import { useContext } from "react";
+import { Context } from "../context/Context.jsx";
 export default function DeleteButton({ id }) {
-    async function handleClick() {
-        const response = await deleteCandidate({ id })
-        console.log(response)
-        window.location.reload()
-        
-
-    }
-    return (
-        <button
-            className="bg-rose-700 rounded-lg px-2 py-2 hover:bg-rose-800 hover:scale-105 transition-all"
-            onClick={handleClick}
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
-        </button>
-    )
+  const { fetchData } = useContext(Context);
+  async function handleClick() {
+    const response = await deleteCandidate({ id });
+    console.log(response);
+    fetchData();
+  }
+  return (
+    <button
+      className="bg-rose-700 rounded-lg px-2 py-2 hover:bg-rose-800 hover:scale-105 transition-all"
+      onClick={handleClick}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="icon icon-tabler icon-tabler-trash"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        stroke="currentColor"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path
+          stroke="none"
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path d="M4 7l16 0" />
+        <path d="M10 11l0 6" />
+        <path d="M14 11l0 6" />
+        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+      </svg>
+    </button>
+  );
 }

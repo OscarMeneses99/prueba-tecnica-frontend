@@ -5,12 +5,11 @@ export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [candidates, setCandidates] = useState([]);
-
+  const fetchData = async () => {
+    const candidates = await getCandidates();
+    setCandidates(candidates);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const candidates = await getCandidates();
-      setCandidates(candidates);
-    };
     fetchData();
   }, []);
 
@@ -19,6 +18,7 @@ export const ContextProvider = ({ children }) => {
       value={{
         candidates,
         setCandidates,
+        fetchData,
       }}
     >
       {children}
