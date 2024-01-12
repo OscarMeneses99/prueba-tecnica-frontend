@@ -12,13 +12,13 @@ function EditCandidates() {
     navigate("/*");
     return null;
   }
-  const { name, age, email, phone, interviewDate, allSkills } = candidate;
+  const { name, age, email, phone, interviewDate, skills } = candidate;
 
   function handleSubmit(e) {
     e.preventDefault();
     const { name, age, email, phone, interviewDate, skills } = e.target;
 
-    fetch(`http://localhost:5000/api/candidates/${id}`, {
+    fetch(`https://prueba-tecnica-backend-sp.onrender.com/api/candidates/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
@@ -29,7 +29,7 @@ function EditCandidates() {
         email: email.value,
         phone: phone.value,
         interviewDate: interviewDate.value,
-        allSkills: skills.value,
+        skills: skills.value,
       }),
     })
       .then((res) => res.json())
@@ -183,7 +183,7 @@ function EditCandidates() {
               name="skills"
               rows={2}
               placeholder="React, Node, MongoDB"
-              defaultValue={allSkills}
+              defaultValue={skills}
               required
               className="w-full rounded-lg bg-[#303030] p-4 text-sm shadow-sm"
             />
