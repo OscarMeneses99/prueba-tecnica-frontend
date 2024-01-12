@@ -15,6 +15,17 @@ export async function createCandidate({ data }) {
   return await response.json();
 }
 
+export async function updateCandidate({ id, newCandidate }) {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newCandidate),
+  });
+  return await response.json();
+}
+
 export async function deleteCandidate({ id }) {
   const response = await fetch(`${API_URL}/${id}`, {
     method: "DELETE",

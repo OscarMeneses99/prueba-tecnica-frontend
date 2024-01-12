@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { Context } from "../context/Context.jsx";
 export default function ListOfCandidate() {
   const { candidates } = useContext(Context);
-  console.log(candidates);
 
   return (
     <section className="flex flex-col justify-center items-center gap-5 px-4 w-full">
