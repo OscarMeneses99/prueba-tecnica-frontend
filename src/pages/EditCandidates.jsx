@@ -18,7 +18,7 @@ function EditCandidates() {
     e.preventDefault();
     const { name, age, email, phone, interviewDate, skills } = e.target;
 
-    fetch(`https://prueba-tecnica-backend-sp.onrender.com/api/candidates/${id}`, {
+    fetch(`https://prueba-tecnica-backend-dev-rcns.2.us-1.fl0.io/api/candidates/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
